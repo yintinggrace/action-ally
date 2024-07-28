@@ -3,6 +3,10 @@ const string = {
     title: 'ACTION ALLY',
     slogan: 'Your Path to Productivity Starts Here',
     categories: 'Categories',
+    create: {
+      name: 'Add category',
+      plus: 'fa-solid fa-plus'
+    },
   },
 }
 
