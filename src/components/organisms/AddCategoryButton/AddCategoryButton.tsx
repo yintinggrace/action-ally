@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../../../theme/theme';
 import string from '../../../string';
@@ -28,8 +29,14 @@ const SText = styled(Text)`
 `;
 
 const AddCategoryButton = () => {
+  const navigate = useNavigate();
+
+  const handleAddCategory = () => {
+    navigate('/add-category');
+  };
+
   return (
-    <SLi>
+    <SLi onClick={handleAddCategory}>
       <SIcon name={string.home.create.plus} />
 
       <SText>

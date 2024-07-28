@@ -8,6 +8,9 @@ const string = {
       plus: 'fa-solid fa-plus'
     },
   },
+  addCategory: {
+    title: 'Add Category',
+  },
 }
 
 export default string;
