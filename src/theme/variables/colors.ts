@@ -9,6 +9,7 @@ const colors = {
 
   // White
   white: 'rgb(255, 255, 255)',
+  whiteTransparent: 'rgba(255, 255, 255, 0.1)',
 
   // Blue
   royalBlue: 'rgb(71, 81, 150)',
