@@ -6,12 +6,13 @@ const GlobalStyle = createGlobalStyle`
   * {
     border: 0;
     color: ${theme.colors.white};
-    background-color: ${theme.colors.royalBlue};
     font-family: 'Helvetica', 'Arial', sans-serif;
-    font-size: ${theme.fontSizes.mouse};
-    line-height: 1;
     margin: 0;
     padding: 0;
+  }
+
+  body {
+    background-color: ${theme.colors.royalBlue};
   }
 `;
 

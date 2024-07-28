@@ -1,6 +1,9 @@
-const Home = () => {
+import React from 'react';
+import Main from '../../components/templates/Main/Main';
+
+const Home: React.FC = () => {
   return (
-    <div>This is the Home page</div>
+    <Main />
   );
 };
 
