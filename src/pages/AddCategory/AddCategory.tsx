@@ -40,7 +40,7 @@ const STextField = styled(TextField)<{ hasError: boolean }>`
 `;
 
 const AddCategory = () => {
-  const [icon, setIcon] = useState<string>(string.addCategory.defaultIcon);
+  const [icon, setIcon] = useState<string>('fas fa-layer-group');
   const [backgroundColor, setBackgroundColor] = useState<string>(theme.colors.lightGray);
   const [iconColor, setIconColor] = useState<string>(theme.colors.white);
   const [categoryName, setCategoryName] = useState<string>('');

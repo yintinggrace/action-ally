@@ -37,10 +37,10 @@ const AddCategoryButton = () => {
 
   return (
     <SLi onClick={handleAddCategory}>
-      <SIcon name={string.home.create.plus} />
+      <SIcon name="fa-solid fa-plus" />
 
       <SText>
-        {string.home.create.name}
+        {string.home.addCategory}
       </SText>
     </SLi>
   )

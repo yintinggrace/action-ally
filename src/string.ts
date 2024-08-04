@@ -5,14 +5,10 @@ const string = {
     title: 'ACTION ALLY',
     slogan: 'Your Path to Productivity Starts Here',
     categories: 'Categories',
-    create: {
-      name: 'Add category',
-      plus: 'fa-solid fa-plus'
-    },
+    addCategory: 'Add category',
   },
   addCategory: {
     title: 'Add Category',
-    defaultIcon: 'fas fa-layer-group',
     categoryNamePlaceholder: 'Enter category name...',
     backgroundColor: {
       name: 'Background color',
