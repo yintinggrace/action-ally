@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../../../theme/theme';
 import Text from '../../atoms/Text/Text';
@@ -48,8 +49,14 @@ const SText = styled(Text)`
 `;
 
 const Category: React.FC<CategoryProps> = ({ category }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/category-tasks', { state: { category } });
+  };
+
   return (
-    <SCategoryWrapper>
+    <SCategoryWrapper onClick={handleClick}>
       <SCategoryInfo>
         <SIcon
           name={category.icon}
