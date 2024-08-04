@@ -33,8 +33,10 @@ const SForm = styled.form`
   align-items: center;
 `;
 
-const STextField = styled(TextField)`
+const STextField = styled(TextField)<{ hasError: boolean }>`
   text-align: center;
+  border: ${({ hasError }) => hasError ? `2px solid ${theme.colors.terraCotta}` : 'none'};
+  border-radius: ${({ hasError }) => hasError ? `${theme.space(2)}` : 'none'};
 `;
 
 const AddCategory = () => {
@@ -42,6 +44,7 @@ const AddCategory = () => {
   const [backgroundColor, setBackgroundColor] = useState<string>(theme.colors.lightGray);
   const [iconColor, setIconColor] = useState<string>(theme.colors.white);
   const [categoryName, setCategoryName] = useState<string>('');
+  const [hasError, setHasError] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -49,9 +52,7 @@ const AddCategory = () => {
     navigate('/');
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const saveCategory = () => {
     const newCategory = {
       name: categoryName,
       icon,
@@ -62,6 +63,19 @@ const AddCategory = () => {
     const existingCategories = JSON.parse(localStorage.getItem('categories') || '[]');
     existingCategories.push(newCategory);
     localStorage.setItem('categories', JSON.stringify(existingCategories));
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!categoryName.trim()) {
+      setHasError(true);
+      return;
+    }
+
+    setHasError(false);
+
+    saveCategory();
 
     navigate('/');
   }
@@ -84,6 +98,7 @@ const AddCategory = () => {
           setValue={setCategoryName}
           placeholder={string.addCategory.categoryNamePlaceholder}
           name="categoryName"
+          hasError={hasError}
         />
 
         <BoxWrappers
