@@ -6,7 +6,7 @@ import theme from '../../../theme/theme';
 const SContainer = styled.div`
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin: ${theme.space(2)} 0;
 `;
 
