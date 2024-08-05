@@ -26,6 +26,13 @@ const string = {
       addCategory: 'Add the category'
     }
   },
+  addTask: {
+    title: 'Add Task',
+    taskNamePlaceholder: 'Enter task name...',
+    infoPlaceholder: 'Enter additional info... (optional)',
+    locationPlaceholder: 'Enter location... (optional)',
+    addTask: 'Add the task'
+  }
 }
 
 export default string;

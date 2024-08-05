@@ -3,7 +3,7 @@ import Heading from '../../components/atoms/Heading/Heading';
 import Icon from '../../components/atoms/Icon/Icon';
 import styled from 'styled-components';
 import theme from '../../theme/theme';
-import Text from '../../components/atoms/Text/Text';
+import Button from '../../components/atoms/Button/Button';
 
 interface LocationState {
   category: {
@@ -56,6 +56,16 @@ const STaskList = styled.div`
   position: relative;
 `;
 
+const SButton = styled(Button)`
+  border-radius: 50%;
+  font-size: ${theme.fontSizes.cat};
+  width: ${theme.space(15)};
+  height: ${theme.space(15)};
+  position: absolute;
+  right: ${theme.space(12)};
+  bottom: ${theme.space(12)};
+`;
+
 const CategoryTasks = () => {
   const location = useLocation();
   const state = location.state as LocationState;
@@ -64,6 +74,10 @@ const CategoryTasks = () => {
 
   const handleGoHomeClick = () => {
     navigate('/');
+  }
+
+  const handleAddTaskClick = ( category: { name: string; }) => {
+    navigate('/add-task', { state: { category } });
   }
 
   return (
@@ -86,7 +100,14 @@ const CategoryTasks = () => {
         </STitleWrapper>
       </STaskHeading>
 
-      <STaskList />
+      <STaskList>
+        <SButton
+          className="fas fa-plus"
+          type="button"
+          variant="primary"
+          onClick={ () => handleAddTaskClick(category)}
+        />
+      </STaskList>
     </>
   );
 }
