@@ -26,6 +26,10 @@ const string = {
       addCategory: 'Add the category'
     }
   },
+  categoryTasks: {
+    item: 'item',
+    items: 'items'
+  },
   addTask: {
     title: 'Add Task',
     taskNamePlaceholder: 'Enter task name...',

@@ -1,48 +1,15 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import Heading from '../../components/atoms/Heading/Heading';
-import Icon from '../../components/atoms/Icon/Icon';
+import List from '../../components/templates/Main/List/List';
 import styled from 'styled-components';
 import theme from '../../theme/theme';
 import Button from '../../components/atoms/Button/Button';
+import TaskNumber from '../../components/atoms/TaskNumber/TaskNumber';
+import TaskItems from '../../components/organisms/TaskItems/TaskItems';
+import { Category, Task } from '../../types';
 
 interface LocationState {
-  category: {
-    name: string;
-    icon: string;
-    backgroundColor: string;
-    iconColor: string;
-  };
+  category: Category;
 }
-
-const STitleWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${theme.space(3)};
-`;
-
-const STaskHeading = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  padding: ${theme.space(8)} 0;
-  gap: ${theme.space(5)};
-`;
-
-const SCategoryIcon = styled(Icon)<{ iconColor: string, backgroundColor: string }>`
-  color: ${({ iconColor }) => iconColor};
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  font-size: ${theme.fontSizes.cat};
-  padding: ${theme.space(3)};
-  border-radius: 50%;
-`;
-
-const SBackIcon = styled(Icon)`
-  font-size: ${theme.fontSizes.cat};
-  position: absolute;
-  left: ${theme.space(8)};
-`;
 
 const STaskList = styled.div`
   display: flex;
@@ -68,9 +35,13 @@ const SButton = styled(Button)`
 
 const CategoryTasks = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const state = location.state as LocationState;
   const category = state?.category;
-  const navigate = useNavigate();
+  const storedCategoryJson = localStorage.getItem(category.name);
+  const storedCategory = storedCategoryJson ? JSON.parse(storedCategoryJson) : null;
+  const tasks: Task[] = storedCategory?.tasks || [];
+  const tasksLength = tasks.length;
 
   const handleGoHomeClick = () => {
     navigate('/');
@@ -81,34 +52,22 @@ const CategoryTasks = () => {
   }
 
   return (
-    <>
-      <STaskHeading>
-        <SBackIcon
-          name="fas fa-arrow-left"
-          onClick={handleGoHomeClick}
-        />
-        <STitleWrapper>
-          <SCategoryIcon
-            name={category.icon}
-            className={category.icon}
-            iconColor={category.iconColor}
-            backgroundColor={category.backgroundColor}
-          />
-          <Heading type="h1">
-            {category.name}
-          </Heading>
-        </STitleWrapper>
-      </STaskHeading>
-
+    <List
+      goBack
+      category={category}
+      onBack={handleGoHomeClick}
+    >
       <STaskList>
+        <TaskNumber tasksLength={tasksLength} />
+        <TaskItems tasks={tasks} />
         <SButton
           className="fas fa-plus"
           type="button"
           variant="primary"
-          onClick={ () => handleAddTaskClick(category)}
+          onClick={() => handleAddTaskClick(category)}
         />
       </STaskList>
-    </>
+    </List>
   );
 }
 
