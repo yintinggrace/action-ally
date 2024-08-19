@@ -14,7 +14,7 @@ const SLi = styled.li`
   display: flex;
 `;
 
-const STaskDetails = styled.div`
+const SDetails = styled.div`
   padding: 0 ${theme.space(6)};
   width: 90%;
   display: flex;
@@ -30,7 +30,7 @@ const SText = styled.div`
   font-weight: bold;
 `;
 
-const STaskInfoLocation = styled.div`
+const SInfoLocation = styled.div`
   display: flex;
   & > * {
     font-style: italic;
@@ -55,11 +55,11 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
     <SLi>
       <Checkbox />
 
-      <STaskDetails>
+      <SDetails>
         <SText>{task.name}</SText>
 
         {(task.taskInfo || task.taskLocation) && (
-          <STaskInfoLocation>
+          <SInfoLocation>
             {task.taskInfo && <SText>{task.taskInfo}</SText>}
 
             {task.taskInfo && task.taskLocation && (
@@ -67,9 +67,9 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
             )}
 
             {task.taskLocation && <SText>{task.taskLocation}</SText>}
-          </STaskInfoLocation>
+          </SInfoLocation>
         )}
-      </STaskDetails>
+      </SDetails>
 
       <SIcon name="fas fa-pen" />
       <SIcon name="fas fa-trash" />
