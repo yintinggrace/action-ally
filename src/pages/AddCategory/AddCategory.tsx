@@ -35,8 +35,8 @@ const SForm = styled.form`
 
 const STextField = styled(TextField)<{ hasError: boolean }>`
   text-align: center;
-  border: ${({ hasError }) => hasError ? `2px solid ${theme.colors.terraCotta}` : 'none'};
-  border-radius: ${({ hasError }) => hasError ? `${theme.space(2)}` : 'none'};
+  border: ${({ hasError }) => hasError ? `2px solid ${theme.colors.terraCotta}` : 'initial'};
+  border-radius: ${({ hasError }) => hasError ? `${theme.space(2)}` : 'initial'};
 `;
 
 const AddCategory = () => {
