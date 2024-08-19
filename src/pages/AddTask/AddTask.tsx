@@ -7,20 +7,7 @@ import styled from 'styled-components';
 import theme from '../../theme/theme';
 import TextField from '../../components/atoms/TextField/TextField';
 import Button from '../../components/atoms/Button/Button';
-
-interface Task {
-  name: string;
-  taskInfo: string;
-  taskLocation: string;
-}
-
-interface Category {
-  name: string;
-  icon: string;
-  backgroundColor: string;
-  iconColor: string;
-  tasks: Task[];
-}
+import { Category, Task } from '../../types';
 
 interface LocationState {
   category: Category;
