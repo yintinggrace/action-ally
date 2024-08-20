@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import AddCategory from './pages/AddCategory/AddCategory';
 import CategoryTasks from './pages/CategoryTasks/CategoryTasks';
-import AddTask from './pages/AddTask/AddTask';
+import SaveTask from './pages/SaveTask/SaveTask';
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
       <Router>
         <div className="App" data-testid="App">
           <Routes>
-            <Route path="/add-task" element={<AddTask />} />
+            <Route path="/add-task" element={<SaveTask />} />
             <Route path="/category-tasks" element={<CategoryTasks />} />
             <Route path="/add-category" element={<AddCategory />} />
             <Route path="*" element={<Home />} />

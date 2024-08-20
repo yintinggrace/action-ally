@@ -51,7 +51,7 @@ const SButton = styled(Button)`
   width: 100%;
 `;
 
-const AddTask = () => {
+const SaveTask = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as LocationState;
@@ -151,4 +151,4 @@ const AddTask = () => {
   )
 }
 
-export default AddTask;
+export default SaveTask;
