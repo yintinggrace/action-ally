@@ -65,25 +65,18 @@ const AddTask = () => {
   }
 
   const saveTask = () => {
-    const storedCategoryJson = localStorage.getItem(category.name);
-    let storedCategory: Category | null = storedCategoryJson ? JSON.parse(storedCategoryJson) : null;
-
-    if (!storedCategory) {
-      storedCategory = { ...category, tasks: [] };
-    }
-
-    if (!Array.isArray(storedCategory.tasks)) {
-      storedCategory.tasks = [];
-    }
-
     const newTask: Task = {
+      categoryId: category.id,
       name: taskName,
       taskInfo: taskInfo,
       taskLocation: taskLocation
     };
 
-    storedCategory.tasks.push(newTask);
-    localStorage.setItem(category.name, JSON.stringify(storedCategory));
+    const existingTasksJson = localStorage.getItem('tasks');
+    const existingTasks = existingTasksJson ? JSON.parse(existingTasksJson) : [];
+
+    existingTasks.push(newTask);
+    localStorage.setItem('tasks', JSON.stringify(existingTasks));
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

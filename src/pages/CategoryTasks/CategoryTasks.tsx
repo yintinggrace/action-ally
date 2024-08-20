@@ -38,16 +38,16 @@ const CategoryTasks = () => {
   const navigate = useNavigate();
   const state = location.state as LocationState;
   const category = state?.category;
-  const storedCategoryJson = localStorage.getItem(category.name);
-  const storedCategory = storedCategoryJson ? JSON.parse(storedCategoryJson) : null;
-  const tasks: Task[] = storedCategory?.tasks || [];
+  const storedTasksJson = localStorage.getItem('tasks');
+  const storedTasks = storedTasksJson ? JSON.parse(storedTasksJson) : null;
+  const tasks: Task[] = storedTasks ? storedTasks.filter((storedTask: Task) => storedTask.categoryId === category.id) : [];
   const tasksLength = tasks.length;
 
   const handleGoHomeClick = () => {
     navigate('/');
   }
 
-  const handleAddTaskClick = ( category: { name: string; }) => {
+  const handleAddTaskClick = (category: Category) => {
     navigate('/add-task', { state: { category } });
   }
 

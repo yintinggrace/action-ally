@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import Main from '../../components/templates/Main/Main';
 import string from '../../string';
 import Icon from '../../components/atoms/Icon/Icon';
@@ -54,6 +55,7 @@ const AddCategory = () => {
 
   const saveCategory = () => {
     const newCategory = {
+      id: uuidv4(),
       name: categoryName,
       icon,
       backgroundColor,
