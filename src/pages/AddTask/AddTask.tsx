@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import Main from '../../components/templates/Main/Main';
 import string from '../../string';
 import Icon from '../../components/atoms/Icon/Icon';
@@ -11,6 +12,7 @@ import { Category, Task } from '../../types';
 
 interface LocationState {
   category: Category;
+  task?: Task;
 }
 
 const SIcon = styled(Icon)`
@@ -54,10 +56,11 @@ const AddTask = () => {
   const location = useLocation();
   const state = location.state as LocationState;
   const category = state?.category;
+  const task = location.state?.task;
 
-  const [taskName, setTaskName] = useState<string>('');
-  const [taskInfo, setTaskInfo] = useState<string>('');
-  const [taskLocation, setTaskLocation] = useState<string>('');
+  const [taskName, setTaskName] = useState<string>(task?.name || '');
+  const [taskInfo, setTaskInfo] = useState<string>(task?.taskInfo || '');
+  const [taskLocation, setTaskLocation] = useState<string>(task?.taskLocation || '');
   const [hasError, setHasError] = useState<boolean>(false);
 
   const handleClose = () => {
@@ -66,6 +69,7 @@ const AddTask = () => {
 
   const saveTask = () => {
     const newTask: Task = {
+      taskId: task?.taskId || uuidv4(),
       categoryId: category.id,
       name: taskName,
       taskInfo: taskInfo,
@@ -75,8 +79,22 @@ const AddTask = () => {
     const existingTasksJson = localStorage.getItem('tasks');
     const existingTasks = existingTasksJson ? JSON.parse(existingTasksJson) : [];
 
-    existingTasks.push(newTask);
-    localStorage.setItem('tasks', JSON.stringify(existingTasks));
+    if (task) { // Is editing task
+      const updatedTasks = existingTasks.map((existingTask: Task) =>
+         existingTask.taskId === task.taskId
+          ? {
+            ...existingTask,
+            name: newTask.name,
+            taskInfo: newTask.taskInfo,
+            taskLocation: newTask.taskLocation
+          } : existingTask
+      );
+
+      localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    } else { // Is adding new task
+      existingTasks.push(newTask);
+      localStorage.setItem('tasks', JSON.stringify(existingTasks));
+    }
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -96,7 +114,7 @@ const AddTask = () => {
 
   return (
     <Main
-      title={string.addTask.title}
+      title={task ? string.addTask.titleEdit : string.addTask.titleAdd}
       closePage
       onClose={handleClose}
     >
@@ -126,7 +144,7 @@ const AddTask = () => {
           variant="primary"
           type="submit"
         >
-          {string.addTask.addTask}
+          {task ? string.addTask.save : string.addTask.addTask}
         </SButton>
       </SForm>
     </Main>

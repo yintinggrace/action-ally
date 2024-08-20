@@ -1,15 +1,22 @@
 import TaskItem from '../../molecules/TaskItem/TaskItem';
-import { Task } from '../../../types';
+import { Task, Category } from '../../../types';
 
 interface TaskItemsProps {
   tasks: Task[];
+  category: Category;
 }
 
-const TaskItems: React.FC<TaskItemsProps> = ({ tasks }) => {
+const TaskItems: React.FC<TaskItemsProps> = ({
+  tasks, category
+}) => {
   return (
     <ul>
       {tasks.map((task, index) => (
-        <TaskItem task={task} key={index} />
+        <TaskItem
+          task={task}
+          key={index}
+          category={category}
+        />
       ))}
     </ul>
   )

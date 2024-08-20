@@ -1,11 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import theme from '../../../theme/theme';
 import styled from 'styled-components';
 import Checkbox from '../../atoms/Checkbox/Checkbox';
 import Icon from '../../atoms/Icon/Icon';
-import { Task } from '../../../types';
+import { Task, Category } from '../../../types';
 
 interface TaskItemProps {
   task: Task;
+  category: Category;
 }
 
 const SLi = styled.li`
@@ -50,7 +52,15 @@ const SIcon = styled(Icon)`
   padding: ${theme.space(3)};
 `;
 
-const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
+const TaskItem: React.FC<TaskItemProps> = ({
+  task, category
+}) => {
+  const navigate = useNavigate();
+
+  const handleEditClick = ( task: Task ) => {
+    navigate('/add-task', { state: { task, category } });
+  };
+
   return (
     <SLi>
       <Checkbox />
@@ -71,7 +81,11 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
         )}
       </SDetails>
 
-      <SIcon name="fas fa-pen" />
+      <SIcon
+        name="fas fa-pen"
+        onClick={() => handleEditClick(task)}
+      />
+
       <SIcon name="fas fa-trash" />
     </SLi>
   )

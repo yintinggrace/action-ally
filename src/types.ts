@@ -1,4 +1,5 @@
 export interface Task {
+  taskId: string;
   categoryId: string;
   name: string;
   taskInfo: string;

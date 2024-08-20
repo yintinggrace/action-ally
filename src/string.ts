@@ -31,11 +31,13 @@ const string = {
     items: 'items'
   },
   addTask: {
-    title: 'Add Task',
+    titleAdd: 'Add Task',
+    titleEdit: 'Edit Task',
     taskNamePlaceholder: 'Enter task name...',
     infoPlaceholder: 'Enter additional info... (optional)',
     locationPlaceholder: 'Enter location... (optional)',
-    addTask: 'Add the task'
+    addTask: 'Add the task',
+    save: 'Save'
   }
 }
 

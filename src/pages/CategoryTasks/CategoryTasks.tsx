@@ -41,7 +41,6 @@ const CategoryTasks = () => {
   const storedTasksJson = localStorage.getItem('tasks');
   const storedTasks = storedTasksJson ? JSON.parse(storedTasksJson) : null;
   const tasks: Task[] = storedTasks ? storedTasks.filter((storedTask: Task) => storedTask.categoryId === category.id) : [];
-  const tasksLength = tasks.length;
 
   const handleGoHomeClick = () => {
     navigate('/');
@@ -58,8 +57,13 @@ const CategoryTasks = () => {
       onBack={handleGoHomeClick}
     >
       <STaskList>
-        <TaskNumber tasksLength={tasksLength} />
-        <TaskItems tasks={tasks} />
+        <TaskNumber tasksLength={tasks.length} />
+
+        <TaskItems
+          tasks={tasks}
+          category={category}
+        />
+
         <SButton
           className="fas fa-plus"
           type="button"
