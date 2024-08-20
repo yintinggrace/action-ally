@@ -59,8 +59,8 @@ const AddTask = () => {
   const task = location.state?.task;
 
   const [taskName, setTaskName] = useState<string>(task?.name || '');
-  const [taskInfo, setTaskInfo] = useState<string>(task?.taskInfo || '');
-  const [taskLocation, setTaskLocation] = useState<string>(task?.taskLocation || '');
+  const [taskInfo, setTaskInfo] = useState<string>(task?.info || '');
+  const [taskLocation, setTaskLocation] = useState<string>(task?.location || '');
   const [hasError, setHasError] = useState<boolean>(false);
 
   const handleClose = () => {
@@ -72,8 +72,8 @@ const AddTask = () => {
       taskId: task?.taskId || uuidv4(),
       categoryId: category.id,
       name: taskName,
-      taskInfo: taskInfo,
-      taskLocation: taskLocation
+      info: taskInfo,
+      location: taskLocation
     };
 
     const existingTasksJson = localStorage.getItem('tasks');
@@ -85,8 +85,8 @@ const AddTask = () => {
           ? {
             ...existingTask,
             name: newTask.name,
-            taskInfo: newTask.taskInfo,
-            taskLocation: newTask.taskLocation
+            info: newTask.info,
+            location: newTask.location
           } : existingTask
       );
 

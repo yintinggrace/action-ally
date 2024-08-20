@@ -68,15 +68,19 @@ const TaskItem: React.FC<TaskItemProps> = ({
       <SDetails>
         <SText>{task.name}</SText>
 
-        {(task.taskInfo || task.taskLocation) && (
+        {(task.info || task.location) && (
           <SInfoLocation>
-            {task.taskInfo && <SText>{task.taskInfo}</SText>}
+            {task.info && (
+              <SText>{task.info}</SText>
+            )}
 
-            {task.taskInfo && task.taskLocation && (
+            {task.info && task.location && (
               <SSeparator>|</SSeparator>
             )}
 
-            {task.taskLocation && <SText>{task.taskLocation}</SText>}
+            {task.location && (
+              <SText>{task.location}</SText>
+            )}
           </SInfoLocation>
         )}
       </SDetails>
