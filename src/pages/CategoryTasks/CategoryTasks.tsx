@@ -29,7 +29,7 @@ const SButton = styled(Button)`
   font-size: ${theme.fontSizes.cat};
   width: ${theme.space(15)};
   height: ${theme.space(15)};
-  position: absolute;
+  position: fixed;
   right: ${theme.space(12)};
   bottom: ${theme.space(12)};
 `;
