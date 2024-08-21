@@ -22,6 +22,8 @@ const STaskList = styled.div`
   padding: ${theme.space(8)};
   box-sizing: border-box;
   position: relative;
+  overflow-y: scroll;
+  padding-bottom: ${theme.space(40)};
 `;
 
 const SButton = styled(Button)`
