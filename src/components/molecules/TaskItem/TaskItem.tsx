@@ -7,7 +7,9 @@ import { Task, Category } from '../../../types';
 
 interface TaskItemProps {
   task: Task;
+  tasks: Task[];
   category: Category;
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
 }
 
 const SLi = styled.li`
@@ -53,7 +55,7 @@ const SIcon = styled(Icon)`
 `;
 
 const TaskItem: React.FC<TaskItemProps> = ({
-  task, category
+  task, tasks, category, setTasks
 }) => {
   const navigate = useNavigate();
 
@@ -61,9 +63,18 @@ const TaskItem: React.FC<TaskItemProps> = ({
     navigate('/add-task', { state: { task, category } });
   };
 
+  const handleRemoveTask = () => {
+    const updatedTasks = tasks.filter((t) => t.taskId !== task.taskId);
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  };
+
   return (
     <SLi>
-      <Checkbox />
+      <Checkbox
+        checked={false}
+        onChange={handleRemoveTask}
+      />
 
       <SDetails>
         <SText>{task.name}</SText>
@@ -90,7 +101,10 @@ const TaskItem: React.FC<TaskItemProps> = ({
         onClick={() => handleEditClick(task)}
       />
 
-      <SIcon name="fas fa-trash" />
+      <SIcon
+        name="fas fa-trash"
+        onClick={handleRemoveTask}
+      />
     </SLi>
   )
 }

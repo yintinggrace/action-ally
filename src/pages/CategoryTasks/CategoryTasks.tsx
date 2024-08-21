@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import List from '../../components/templates/Main/List/List';
 import styled from 'styled-components';
@@ -38,9 +39,15 @@ const CategoryTasks = () => {
   const navigate = useNavigate();
   const state = location.state as LocationState;
   const category = state?.category;
-  const storedTasksJson = localStorage.getItem('tasks');
-  const storedTasks = storedTasksJson ? JSON.parse(storedTasksJson) : null;
-  const tasks: Task[] = storedTasks ? storedTasks.filter((storedTask: Task) => storedTask.categoryId === category.id) : [];
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  useEffect(() => {
+    const storedTasksJson = localStorage.getItem('tasks');
+    const storedTasks = storedTasksJson ? JSON.parse(storedTasksJson) : [];
+    const filteredTasks = storedTasks.filter((task: Task) => task.categoryId === category.id);
+
+    setTasks(filteredTasks);
+  }, []);
 
   const handleGoHomeClick = () => {
     navigate('/');
@@ -62,6 +69,7 @@ const CategoryTasks = () => {
         <TaskItems
           tasks={tasks}
           category={category}
+          setTasks={setTasks}
         />
 
         <SButton
