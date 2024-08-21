@@ -51,7 +51,7 @@ const STitleWrapper = styled.div`
   gap: ${theme.space(3)};
 `;
 
-const STaskList = styled.div`
+const SContent = styled.div`
   background-color: ${theme.colors.white};
 `;
 
@@ -86,9 +86,9 @@ const List: React.FC<ListProps> = ({
         </STitleWrapper>
       </SHeader>
 
-      <STaskList>
+      <SContent>
         {children}
-      </STaskList>
+      </SContent>
     </SList>
   );
 };
