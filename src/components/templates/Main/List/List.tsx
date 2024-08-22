@@ -37,7 +37,6 @@ const SGoBackIcon = styled(Icon)`
 `;
 
 const SCategoryIcon = styled(Icon)`
-  cursor: pointer;
   color: ${({ iconColor }) => iconColor};
   background-color: ${({ backgroundColor }) => backgroundColor};
   font-size: ${theme.fontSizes.cat};
