@@ -9,6 +9,7 @@ interface CheckboxProps {
 
 const SInput = styled.input`
   width: ${theme.space(8)};
+  height: ${theme.space(8)};
   color: ${theme.colors.royalBlue};
   cursor: pointer;
   transition: transform 0.3s ease;
