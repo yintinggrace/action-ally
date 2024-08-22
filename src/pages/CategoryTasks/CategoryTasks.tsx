@@ -34,6 +34,13 @@ const SButton = styled(Button)`
   position: fixed;
   right: ${theme.space(12)};
   bottom: ${theme.space(12)};
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    background-color: ${theme.colors.mediumBlack};
+  }
 `;
 
 const CategoryTasks = () => {
