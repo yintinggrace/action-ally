@@ -16,10 +16,10 @@ interface CategoryProps {
 }
 
 const SCategoryWrapper = styled.li`
-  height: ${theme.space(44)};
-  width: ${theme.space(38)};
+  height: ${theme.space(40)};
+  width: ${theme.space(35)};
   background-color: ${theme.colors.white};
-  border-radius: ${theme.space(2)};
+  border-radius: ${theme.space(5)};
   display: flex;
   flex-direction: column;
   justify-content: center;
