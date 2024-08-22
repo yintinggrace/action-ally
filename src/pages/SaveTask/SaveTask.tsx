@@ -49,6 +49,13 @@ const SButton = styled(Button)`
   border-radius: ${theme.space(5)};
   margin-top: ${theme.space(10)};
   width: 100%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  &:hover {
+    transform: scale(1.01);
+  }
+  &:active {
+    background-color: ${theme.colors.mediumBlack};
+  }
 `;
 
 const SaveTask = () => {
