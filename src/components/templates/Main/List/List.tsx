@@ -34,6 +34,13 @@ const SGoBackIcon = styled(Icon)`
   position: absolute;
   left: ${theme.space(10)};
   height: 100%;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    color: ${theme.colors.mediumBlack};
+  }
 `;
 
 const SCategoryIcon = styled(Icon)`
