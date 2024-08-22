@@ -23,24 +23,26 @@ const SLi = styled.li<{ option: string; type: type; selected: boolean }>`
   cursor: pointer;
   box-sizing: border-box;
   font-size: ${theme.fontSizes.cat};
-  background-color: ${({ type, option }) => {
-    return type === 'color' ? option : 'transparent';
-  }};
-  border: ${({ type, selected }) => {
-    if (type === 'color' && selected) {
-      return `2px solid ${theme.colors.black}`;
-    }
-    return 'none';
-  }};
+  background-color: ${({ type, option }) => (
+    type === 'color' ? option : 'transparent'
+  )};
+  outline: ${({ type, selected }) => (
+    type === 'color' && selected ? `2px solid ${theme.colors.mediumBlack}` : 'none'
+  )};
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  &:hover {
+    ${({ type }) => type === 'color' && 'transform: scale(1.075);'}
+    ${({ type }) => type === 'color' && `outline: 2px solid ${theme.colors.white};`}
+  }
 `;
 
-const SIcon = styled.i<{ type?: type; selected?: boolean }>`
-  color: ${({ type, selected }) => {
-    if (type === 'icon' && selected) {
-      return theme.colors.black;
-    }
-    return theme.colors.white;
-  }};
+const SIcon = styled.i<{ selected?: boolean }>`
+  color: ${({ selected }) => selected ? theme.colors.mediumBlack : theme.colors.white};
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
+    color: ${theme.colors.mediumBlack};
+  }
 `;
 
 interface OptionsProps {
@@ -73,7 +75,10 @@ const Options: React.FC<OptionsProps> = ({
           onClick={() => handleSelectedOption(option)}
         >
           {type === 'icon' && (
-            <SIcon className={option} />
+            <SIcon
+              className={option}
+              selected={selectedOption === option}
+            />
           )}
         </SLi>
       ))}
