@@ -24,7 +24,7 @@ const SDetails = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: ${theme.space(1)}
+  gap: ${theme.space(1)};
 `;
 
 const SText = styled.div`
