@@ -26,18 +26,31 @@ const SButton = styled(Button)`
   width: ${theme.space(90)};
   height: ${theme.space(12)};
   border-radius: ${theme.space(5)};
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+  &:hover {
+    transform: scale(1.01);
+  }
+  &:active {
+    background-color: ${theme.colors.mediumBlack};
+  }
 `;
 
 const SForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 200px;
 `;
 
 const STextField = styled(TextField)<{ hasError: boolean }>`
   text-align: center;
-  border: ${({ hasError }) => hasError ? `2px solid ${theme.colors.terraCotta}` : 'initial'};
-  border-radius: ${({ hasError }) => hasError ? `${theme.space(2)}` : 'initial'};
+  border: 2px solid ${({ hasError }) => hasError ? theme.colors.terraCotta : theme.colors.mediumGray};
+  border-radius: ${theme.space(2)};
+  padding: ${theme.space(2)} 0;
+  &::placeholder {
+    color: ${theme.colors.mediumGray};
+  }
 `;
 
 const AddCategory = () => {
