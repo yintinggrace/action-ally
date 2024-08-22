@@ -26,7 +26,7 @@ const SCategoryWrapper = styled.li`
   align-items: center;
   position: relative;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.3s ease;
   &:hover {
     transform: scale(1.05);
   }
