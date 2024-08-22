@@ -1,6 +1,7 @@
 const colors = {
   // Black
   black: 'rgb(0, 0, 0)',
+  mediumBlack: 'rgb(31, 31, 31)',
 
   // Gray
   darkGray: 'rgb(89, 89, 89)',

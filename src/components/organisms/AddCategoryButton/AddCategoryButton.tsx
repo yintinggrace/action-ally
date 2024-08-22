@@ -1,31 +1,23 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../../../theme/theme';
-import string from '../../../string';
-import Icon from '../../atoms/Icon/Icon';
-import Text from '../../atoms/Text/Text';
+import Button from '../../atoms/Button/Button';
 
-const SLi = styled.li`
-  height: ${theme.space(44)};
-  width: ${theme.space(38)};
-  background-color: ${theme.colors.white};
-  color: ${theme.colors.darkGray};
-  border-radius: ${theme.space(2)};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const SIcon = styled(Icon)`
+const SButton = styled(Button)`
+  border-radius: 50%;
   font-size: ${theme.fontSizes.cat};
-  color: ${theme.colors.royalBlue};
-  padding: ${theme.space(2)};
-  margin-bottom: ${theme.space(2)};
-`;
-
-const SText = styled(Text)`
-  color: ${theme.colors.darkGray};
+  width: ${theme.space(15)};
+  height: ${theme.space(15)};
+  position: fixed;
+  right: ${theme.space(12)};
+  bottom: ${theme.space(12)};
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    background-color: ${theme.colors.mediumBlack};
+  }
 `;
 
 const AddCategoryButton = () => {
@@ -36,13 +28,12 @@ const AddCategoryButton = () => {
   };
 
   return (
-    <SLi onClick={handleAddCategory}>
-      <SIcon name="fa-solid fa-plus" />
-
-      <SText>
-        {string.home.addCategory}
-      </SText>
-    </SLi>
+    <SButton
+      className="fas fa-plus"
+      type="button"
+      variant="primary"
+      onClick={handleAddCategory}
+    />
   )
 }
 
