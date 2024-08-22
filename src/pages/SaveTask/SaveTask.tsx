@@ -35,8 +35,11 @@ const STextField = styled(TextField)<{ hasError?: boolean }>`
   font-size: ${theme.fontSizes.mouse};
   padding-bottom: ${theme.space(3)};
   border-bottom: 1px solid ${theme.colors.lightGray};
+  font-style: normal;
+  color: ${theme.colors.white}
   &::placeholder {
-    color: ${({ hasError }) => hasError ? `${theme.colors.terraCotta}` : theme.colors.lightGray};
+    color: ${({ hasError }) => hasError ? `${theme.colors.terraCotta}` : theme.colors.mediumGray};
+    font-style: italic;
   }
 `;
 
