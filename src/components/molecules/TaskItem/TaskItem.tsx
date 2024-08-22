@@ -3,6 +3,8 @@ import theme from '../../../theme/theme';
 import styled from 'styled-components';
 import Checkbox from '../../atoms/Checkbox/Checkbox';
 import Icon from '../../atoms/Icon/Icon';
+import Heading from '../../atoms/Heading/Heading';
+import Text from '../../atoms/Text/Text';
 import { Task, Category } from '../../../types';
 
 interface TaskItemProps {
@@ -19,33 +21,24 @@ const SLi = styled.li`
 `;
 
 const SDetails = styled.div`
+  line-height: ${theme.space(6)};
   padding: 0 ${theme.space(6)};
   width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: ${theme.space(1)};
 `;
 
-const SText = styled.div`
+const SHeading = styled(Heading)`
   color: ${theme.colors.black};
-  list-style-type: none;
-  font-size: ${theme.fontSizes.mouse};
-  font-weight: bold;
 `;
 
-const SInfoLocation = styled.div`
-  display: flex;
-  & > * {
-    font-style: italic;
-    color: ${theme.colors.darkGray};
-    font-weight: normal;
-  }
-`;
-
-const SSeparator = styled.span`
-  color: ${theme.colors.mediumGray};
-  margin: 0 ${theme.space(2)};
+const SText = styled(Text)`
+  font-size: ${theme.fontSizes.ant};
+  font-weight: normal;
+  color: ${theme.colors.darkGray};
+  margin-top: ${theme.space(1)};
+  font-style: italic;
 `;
 
 const SIcon = styled(Icon)`
@@ -85,22 +78,14 @@ const TaskItem: React.FC<TaskItemProps> = ({
       />
 
       <SDetails>
-        <SText>{task.name}</SText>
+        <SHeading type="h3">{task.name}</SHeading>
 
-        {(task.info || task.location) && (
-          <SInfoLocation>
-            {task.info && (
-              <SText>{task.info}</SText>
-            )}
+        {task.info && (
+          <SText>{task.info}</SText>
+        )}
 
-            {task.info && task.location && (
-              <SSeparator>|</SSeparator>
-            )}
-
-            {task.location && (
-              <SText>{task.location}</SText>
-            )}
-          </SInfoLocation>
+        {task.location && (
+          <SText>{task.location}</SText>
         )}
       </SDetails>
 
