@@ -27,6 +27,13 @@ const SIcon = styled(Icon)`
   top: ${theme.space(8)};
   font-size: ${theme.fontSizes.cat};
   cursor: pointer;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    color: ${theme.colors.mediumBlack};
+  }
 `;
 
 const Main: React.FC<MainProps> = ({ children, title, closePage, onClose: handleClose }) => {
