@@ -52,6 +52,14 @@ const SIcon = styled(Icon)`
   color: ${theme.colors.darkGray};
   font-size: ${theme.fontSizes.mouse};
   padding: ${theme.space(3)};
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    color: ${theme.colors.mediumBlack};
+  }
 `;
 
 const TaskItem: React.FC<TaskItemProps> = ({
