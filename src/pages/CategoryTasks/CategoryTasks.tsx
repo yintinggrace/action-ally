@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import List from '../../components/templates/Main/List/List';
+import List from '../../components/organisms/List/List';
 import styled from 'styled-components';
 import theme from '../../theme/theme';
 import Button from '../../components/atoms/Button/Button';

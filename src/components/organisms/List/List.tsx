@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
-import theme from '../../../../theme/theme';
-import Heading from '../../../atoms/Heading/Heading';
-import Icon from '../../../atoms/Icon/Icon';
-import { Category } from '../../../../types';
+import theme from '../../../theme/theme';
+import Heading from '../../atoms/Heading/Heading';
+import Icon from '../../atoms/Icon/Icon';
+import { Category } from '../../../types';
 
 interface ListProps {
   children?: ReactNode;
