@@ -14,7 +14,7 @@ interface MainProps {
 
 const SMain = styled.main`
   padding: ${theme.space(14)} ${theme.space(8)};
-  height: 100vh;
+  overflow-y: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@ const SMain = styled.main`
 `;
 
 const SIcon = styled(Icon)`
-  position: absolute;
+  position: fixed;
   right: ${theme.space(8)};
   top: ${theme.space(8)};
   font-size: ${theme.fontSizes.cat};

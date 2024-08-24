@@ -14,9 +14,13 @@ const SIcon = styled(Icon)<{ backgroundColor: string; iconColor: string; }>`
   font-size: ${theme.fontSizes.eagle};
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ iconColor }) => iconColor};
-  padding: ${theme.space(6)};
   margin: ${theme.space(8)};
   border-radius: 50%;
+  height: ${theme.space(20)};
+  width: ${theme.space(20)};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const SButton = styled(Button)`
