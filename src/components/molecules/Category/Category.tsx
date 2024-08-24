@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import theme from '../../../theme/theme';
 import Text from '../../atoms/Text/Text';
 import Icon from '../../atoms/Icon/Icon';
+import CategoryActions from '../CategoryActions/CategoryActions';
 
 interface CategoryItem {
+  id?: string;
   name: string;
   icon: string;
   backgroundColor: string;
@@ -55,6 +57,10 @@ const SText = styled(Text)`
 
 const Category: React.FC<CategoryProps> = ({ category }) => {
   const navigate = useNavigate();
+  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  const filteredTasks = tasks.filter((task: { categoryId: string }) =>
+    task.categoryId === category.id
+  );
 
   const handleClick = () => {
     navigate('/category-tasks', { state: { category } });
@@ -70,6 +76,7 @@ const Category: React.FC<CategoryProps> = ({ category }) => {
         />
         <SText>{category.name}</SText>
       </SCategoryInfo>
+      <CategoryActions taskLength={filteredTasks.length} />
     </SCategoryWrapper>
   );
 };
