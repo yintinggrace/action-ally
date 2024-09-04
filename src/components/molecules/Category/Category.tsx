@@ -76,7 +76,11 @@ const Category: React.FC<CategoryProps> = ({ category }) => {
         />
         <SText>{category.name}</SText>
       </SCategoryInfo>
-      <CategoryActions taskLength={filteredTasks.length} />
+
+      <CategoryActions
+        taskLength={filteredTasks.length}
+        category={category}
+      />
     </SCategoryWrapper>
   );
 };

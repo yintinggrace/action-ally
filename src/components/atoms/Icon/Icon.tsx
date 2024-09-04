@@ -3,7 +3,7 @@ interface IconProps {
   name: string;
   iconColor?: string;
   backgroundColor?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent) => void;
 }
 
 const Icon: React.FC<IconProps> = ({

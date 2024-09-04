@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Main from '../../components/templates/Main/Main';
 import string from '../../string';
@@ -9,6 +9,11 @@ import styled from 'styled-components';
 import TextField from '../../components/atoms/TextField/TextField';
 import BoxWrappers from '../../components/organisms/BoxWrappers/BoxWrappers';
 import Button from '../../components/atoms/Button/Button';
+import { Category } from '../../types';
+
+interface LocationState {
+  category?: Category;
+}
 
 const SIcon = styled(Icon)<{ backgroundColor: string; iconColor: string; }>`
   font-size: ${theme.fontSizes.eagle};
@@ -58,10 +63,14 @@ const STextField = styled(TextField)<{ hasError: boolean }>`
 `;
 
 const AddCategory = () => {
-  const [icon, setIcon] = useState<string>('fas fa-layer-group');
-  const [backgroundColor, setBackgroundColor] = useState<string>(theme.colors.lightGray);
-  const [iconColor, setIconColor] = useState<string>(theme.colors.white);
-  const [categoryName, setCategoryName] = useState<string>('');
+  const location = useLocation();
+  const state = location.state as LocationState;
+  const category = state?.category;
+
+  const [icon, setIcon] = useState<string>(category?.icon || 'fas fa-layer-group');
+  const [backgroundColor, setBackgroundColor] = useState<string>(category?.backgroundColor || theme.colors.lightGray);
+  const [iconColor, setIconColor] = useState<string>(category?.iconColor || theme.colors.white);
+  const [categoryName, setCategoryName] = useState<string>(category?.name || '');
   const [hasError, setHasError] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -80,8 +89,24 @@ const AddCategory = () => {
     };
 
     const existingCategories = JSON.parse(localStorage.getItem('categories') || '[]');
-    existingCategories.push(newCategory);
-    localStorage.setItem('categories', JSON.stringify(existingCategories));
+
+    if (category) { // Is editing category
+      const updatedCategories = existingCategories.map((existingCategory: Category) =>
+         existingCategory.id === category.id
+          ? {
+            ...existingCategory,
+            name: newCategory.name,
+            icon: newCategory.icon,
+            backgroundColor: newCategory.backgroundColor,
+            iconColor: newCategory.iconColor
+          } : existingCategory
+      );
+
+      localStorage.setItem('categories', JSON.stringify(updatedCategories));
+    } else { // Is adding new category
+      existingCategories.push(newCategory);
+      localStorage.setItem('categories', JSON.stringify(existingCategories));
+    }
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -101,7 +126,7 @@ const AddCategory = () => {
 
   return (
     <Main
-      title={string.addCategory.title}
+      title={category ? string.addCategory.titleEdit : string.addCategory.titleAdd}
       closePage
       onClose={handleClose}
     >
@@ -127,7 +152,7 @@ const AddCategory = () => {
         />
 
         <SButton type="submit">
-          {string.addCategory.buttons.addCategory}
+          {category ? string.addCategory.buttons.save : string.addCategory.buttons.addCategory}
         </SButton>
       </SForm>
     </Main>

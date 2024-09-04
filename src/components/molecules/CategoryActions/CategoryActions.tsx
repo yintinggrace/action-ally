@@ -1,11 +1,22 @@
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import theme from "../../../theme/theme";
+import Icon from "../../atoms/Icon/Icon";
+
+interface CategoryItem {
+  id?: string;
+  name: string;
+  icon: string;
+  backgroundColor: string;
+  iconColor: string;
+}
 
 interface CategoryActionsProps {
   taskLength: number;
+  category: CategoryItem;
 }
 
-const SCategoryActions = styled.div`
+const SActionsWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -20,11 +31,31 @@ const SNumber = styled.div`
   color: ${theme.colors.darkGray};
 `;
 
-const CategoryActions: React.FC<CategoryActionsProps> = ({ taskLength }) => {
+const SIcon = styled(Icon)`
+  font-size: ${theme.fontSizes.ant};
+  color: ${theme.colors.darkGray};
+  cursor: pointer;
+  &:hover {
+    color: ${theme.colors.mediumBlack};
+  }
+`;
+
+const CategoryActions: React.FC<CategoryActionsProps> = ({ taskLength, category }) => {
+  const navigate = useNavigate();
+
+  const handleEditCategory = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    navigate('/add-category', { state: { category } });
+  };
+
   return (
-    <SCategoryActions>
+    <SActionsWrapper>
       <SNumber>{taskLength}</SNumber>
-    </SCategoryActions>
+      <SIcon
+        name="fas fa-pen"
+        onClick={handleEditCategory}
+      />
+    </SActionsWrapper>
   );
 }
 

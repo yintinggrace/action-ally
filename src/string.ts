@@ -8,7 +8,8 @@ const string = {
     addCategory: 'Add category',
   },
   addCategory: {
-    title: 'Add Category',
+    titleAdd: 'Add Category',
+    titleEdit: 'Edit Category',
     categoryNamePlaceholder: 'Enter category name...',
     backgroundColor: {
       name: 'Background color',
@@ -23,7 +24,8 @@ const string = {
       iconOptions: ['fas fa-home', 'fas fa-briefcase', 'fas fa-shopping-cart', 'fas fa-dumbbell', 'fas fa-heartbeat', 'fas fa-graduation-cap', 'fas fa-plane', 'fas fa-film', 'fas fa-wallet', 'fas fa-user-graduate']
     },
     buttons: {
-      addCategory: 'Add the category'
+      addCategory: 'Add the category',
+      save: 'Save'
     }
   },
   categoryTasks: {
