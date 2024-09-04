@@ -31,7 +31,6 @@ const AddCategoryButton = () => {
     <SButton
       className="fas fa-plus"
       type="button"
-      variant="primary"
       onClick={handleAddCategory}
     />
   )

@@ -150,10 +150,7 @@ const SaveTask = () => {
           placeholder={string.addTask.locationPlaceholder}
           setValue={setTaskLocation}
         />
-        <SButton
-          variant="primary"
-          type="submit"
-        >
+        <SButton type="submit">
           {task ? string.addTask.save : string.addTask.addTask}
         </SButton>
       </SForm>

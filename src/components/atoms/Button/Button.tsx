@@ -7,31 +7,23 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   children?: ReactNode;
-  variant?: 'primary';
   type?: 'button' | 'submit';
 }
 
-const variantStyles = {
-  primary: css`
-    background-color: ${theme.colors.skyBlue};
-    color: ${theme.colors.white};;
-    border: none;
-  `,
-};
-
-const SBaseButton = styled.button<{ variant?: 'primary' }>`
+const SBaseButton = styled.button`
   cursor: pointer;
-  ${({ variant }) => variant && variantStyles[variant]}
+  background-color: ${theme.colors.skyBlue};
+  color: ${theme.colors.white};
+  border: none;
 `;
 
 const Button: React.FC<ButtonProps> = ({
-  onClick: handleClick, className, children, variant, type = 'button'
+  onClick: handleClick, className, children, type = 'button'
 }) => {
   return (
     <SBaseButton
       onClick={handleClick}
       className={className}
-      variant={variant}
       type={type}
     >
       <Text>{children}</Text>

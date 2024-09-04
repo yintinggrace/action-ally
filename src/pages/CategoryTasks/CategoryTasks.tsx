@@ -84,7 +84,6 @@ const CategoryTasks = () => {
         <SButton
           className="fas fa-plus"
           type="button"
-          variant="primary"
           onClick={() => handleAddTaskClick(category)}
         />
       </STaskList>
