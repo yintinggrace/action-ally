@@ -40,7 +40,7 @@ const SCategoryInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: ${theme.space(2)};
+  margin-bottom: ${theme.space(6)};
 `;
 
 const SIcon = styled(Icon)<{ iconColor: string, backgroundColor: string }>`
