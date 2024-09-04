@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import string from '../../string';
 import theme from '../../theme/theme';
