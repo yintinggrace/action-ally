@@ -54,6 +54,8 @@ const CategoryList = () => {
           <Category
             key={index}
             category={category}
+            categories={categories}
+            setCategories={setCategories}
           />
         ))}
 

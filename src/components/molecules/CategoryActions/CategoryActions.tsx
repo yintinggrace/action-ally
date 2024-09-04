@@ -14,6 +14,8 @@ interface CategoryItem {
 interface CategoryActionsProps {
   taskLength: number;
   category: CategoryItem;
+  categories: CategoryItem[];
+  setCategories: React.Dispatch<React.SetStateAction<CategoryItem[]>>;
 }
 
 const SActionsWrapper = styled.div`
@@ -31,6 +33,11 @@ const SNumber = styled.div`
   color: ${theme.colors.darkGray};
 `;
 
+const SIcons = styled.div`
+  display: flex;
+  gap: ${theme.space(3)};
+`;
+
 const SIcon = styled(Icon)`
   font-size: ${theme.fontSizes.ant};
   color: ${theme.colors.darkGray};
@@ -40,7 +47,7 @@ const SIcon = styled(Icon)`
   }
 `;
 
-const CategoryActions: React.FC<CategoryActionsProps> = ({ taskLength, category }) => {
+const CategoryActions: React.FC<CategoryActionsProps> = ({ taskLength, category, categories, setCategories }) => {
   const navigate = useNavigate();
 
   const handleEditCategory = (event: React.MouseEvent) => {
@@ -48,13 +55,27 @@ const CategoryActions: React.FC<CategoryActionsProps> = ({ taskLength, category 
     navigate('/add-category', { state: { category } });
   };
 
+  const handleRemoveCategory = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    const updatedCategories = categories.filter((c) => c.id !== category.id);
+    setCategories(updatedCategories);
+    localStorage.setItem('categories', JSON.stringify(updatedCategories));
+  };
+
   return (
     <SActionsWrapper>
       <SNumber>{taskLength}</SNumber>
-      <SIcon
-        name="fas fa-pen"
-        onClick={handleEditCategory}
-      />
+      <SIcons>
+        <SIcon
+          name="fas fa-pen"
+          onClick={handleEditCategory}
+        />
+
+        <SIcon
+          name="fas fa-trash"
+          onClick={handleRemoveCategory}
+        />
+      </SIcons>
     </SActionsWrapper>
   );
 }

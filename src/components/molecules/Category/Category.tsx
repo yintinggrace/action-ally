@@ -15,6 +15,8 @@ interface CategoryItem {
 
 interface CategoryProps {
   category: CategoryItem;
+  categories: CategoryItem[];
+  setCategories: React.Dispatch<React.SetStateAction<CategoryItem[]>>;
 }
 
 const SCategoryWrapper = styled.li`
@@ -55,7 +57,7 @@ const SText = styled(Text)`
   color: ${theme.colors.darkGray};
 `;
 
-const Category: React.FC<CategoryProps> = ({ category }) => {
+const Category: React.FC<CategoryProps> = ({ category, categories, setCategories }) => {
   const navigate = useNavigate();
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   const filteredTasks = tasks.filter((task: { categoryId: string }) =>
@@ -80,6 +82,8 @@ const Category: React.FC<CategoryProps> = ({ category }) => {
       <CategoryActions
         taskLength={filteredTasks.length}
         category={category}
+        categories={categories}
+        setCategories={setCategories}
       />
     </SCategoryWrapper>
   );
