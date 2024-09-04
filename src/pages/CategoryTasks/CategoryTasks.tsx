@@ -63,7 +63,7 @@ const CategoryTasks = () => {
   }
 
   const handleAddTaskClick = (category: Category) => {
-    navigate('/add-task', { state: { category } });
+    navigate('/save-task', { state: { category } });
   }
 
   return (

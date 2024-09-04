@@ -13,7 +13,7 @@ const App = () => {
       <Router>
         <div className="App" data-testid="App">
           <Routes>
-            <Route path="/add-task" element={<SaveTask />} />
+            <Route path="/save-task" element={<SaveTask />} />
             <Route path="/category-tasks" element={<CategoryTasks />} />
             <Route path="/add-category" element={<AddCategory />} />
             <Route path="*" element={<Home />} />

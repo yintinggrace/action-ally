@@ -61,7 +61,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
   const navigate = useNavigate();
 
   const handleEditClick = ( task: Task ) => {
-    navigate('/add-task', { state: { task, category } });
+    navigate('/save-task', { state: { task, category } });
   };
 
   const handleRemoveTask = () => {
