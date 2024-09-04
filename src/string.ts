@@ -7,7 +7,7 @@ const string = {
     categories: 'Categories',
     addCategory: 'Add category',
   },
-  addCategory: {
+  saveCategory: {
     titleAdd: 'Add Category',
     titleEdit: 'Edit Category',
     categoryNamePlaceholder: 'Enter category name...',

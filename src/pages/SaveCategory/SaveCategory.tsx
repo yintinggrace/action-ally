@@ -62,7 +62,7 @@ const STextField = styled(TextField)<{ hasError: boolean }>`
   }
 `;
 
-const AddCategory = () => {
+const SaveCategory = () => {
   const location = useLocation();
   const state = location.state as LocationState;
   const category = state?.category;
@@ -126,7 +126,7 @@ const AddCategory = () => {
 
   return (
     <Main
-      title={category ? string.addCategory.titleEdit : string.addCategory.titleAdd}
+      title={category ? string.saveCategory.titleEdit : string.saveCategory.titleAdd}
       closePage
       onClose={handleClose}
     >
@@ -140,7 +140,7 @@ const AddCategory = () => {
         <STextField
           value={categoryName}
           setValue={setCategoryName}
-          placeholder={string.addCategory.categoryNamePlaceholder}
+          placeholder={string.saveCategory.categoryNamePlaceholder}
           name="categoryName"
           hasError={hasError}
         />
@@ -152,11 +152,11 @@ const AddCategory = () => {
         />
 
         <SButton type="submit">
-          {category ? string.addCategory.buttons.save : string.addCategory.buttons.addCategory}
+          {category ? string.saveCategory.buttons.save : string.saveCategory.buttons.addCategory}
         </SButton>
       </SForm>
     </Main>
   )
 }
 
-export default AddCategory;
+export default SaveCategory;

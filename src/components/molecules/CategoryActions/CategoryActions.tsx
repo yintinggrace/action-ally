@@ -52,7 +52,7 @@ const CategoryActions: React.FC<CategoryActionsProps> = ({ taskLength, category,
 
   const handleEditCategory = (event: React.MouseEvent) => {
     event.stopPropagation();
-    navigate('/add-category', { state: { category } });
+    navigate('/save-category', { state: { category } });
   };
 
   const handleRemoveCategory = (event: React.MouseEvent) => {

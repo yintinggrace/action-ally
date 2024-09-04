@@ -24,7 +24,7 @@ const AddCategoryButton = () => {
   const navigate = useNavigate();
 
   const handleAddCategory = () => {
-    navigate('/add-category');
+    navigate('/save-category');
   };
 
   return (

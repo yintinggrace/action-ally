@@ -20,20 +20,20 @@ const BoxWrappers: React.FC<BoxWrappersProps> = ({ setIcon, setBackgroundColor, 
   return (
     <SContainer>
       <BoxWrapper
-        title={string.addCategory.backgroundColor.name}
-        options={string.addCategory.backgroundColor.colorOptions}
+        title={string.saveCategory.backgroundColor.name}
+        options={string.saveCategory.backgroundColor.colorOptions}
         type="color"
         onOptionClick={(backgroundColor: string) => setBackgroundColor(backgroundColor)}
       />
       <BoxWrapper
-        title={string.addCategory.iconColor.name}
-        options={string.addCategory.iconColor.colorOptions}
+        title={string.saveCategory.iconColor.name}
+        options={string.saveCategory.iconColor.colorOptions}
         type="color"
         onOptionClick={(iconColor: string) => setIconColor(iconColor)}
       />
       <BoxWrapper
-        title={string.addCategory.icon.name}
-        options={string.addCategory.icon.iconOptions}
+        title={string.saveCategory.icon.name}
+        options={string.saveCategory.icon.iconOptions}
         type="icon"
         onOptionClick={(name: string) => setIcon(name)}
       />
