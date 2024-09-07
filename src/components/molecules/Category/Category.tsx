@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../../../theme/theme';
 import Text from '../../atoms/Text/Text';
-import Icon from '../../atoms/Icon/Icon';
 import CategoryActions from '../CategoryActions/CategoryActions';
+import CategoryIcon from '../../atoms/CategoryIcon/CategoryIcon';
 
 interface CategoryItem {
   id?: string;
@@ -43,13 +43,8 @@ const SCategoryInfo = styled.div`
   margin-bottom: ${theme.space(6)};
 `;
 
-const SIcon = styled(Icon)<{ iconColor: string, backgroundColor: string }>`
-  font-size: ${theme.fontSizes.cat};
-  color: ${({ iconColor }) => iconColor};
-  padding: ${theme.space(2.5)};
+const SCategoryIcon = styled(CategoryIcon)`
   margin-bottom: ${theme.space(2)};
-  border-radius: 50%;
-  background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 
 const SText = styled(Text)`
@@ -71,10 +66,11 @@ const Category: React.FC<CategoryProps> = ({ category, categories, setCategories
   return (
     <SCategoryWrapper onClick={handleClick}>
       <SCategoryInfo>
-        <SIcon
+        <SCategoryIcon
           name={category.icon}
           iconColor={category.iconColor}
           backgroundColor={category.backgroundColor}
+          size={9}
         />
         <SText>{category.name}</SText>
       </SCategoryInfo>

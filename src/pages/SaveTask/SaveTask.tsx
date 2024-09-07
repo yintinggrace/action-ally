@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Main from '../../components/templates/Main/Main';
 import string from '../../string';
-import Icon from '../../components/atoms/Icon/Icon';
+import CategoryIcon from '../../components/atoms/CategoryIcon/CategoryIcon';
 import styled from 'styled-components';
 import theme from '../../theme/theme';
 import TextField from '../../components/atoms/TextField/TextField';
@@ -15,12 +15,8 @@ interface LocationState {
   task?: Task;
 }
 
-const SIcon = styled(Icon)`
-  font-size: ${theme.fontSizes.whale};
-  background-color: ${theme.colors.lightGray};
-  padding: ${theme.space(15)};
+const SCategoryIcon = styled(CategoryIcon)`
   margin: ${theme.space(15)};
-  border-radius: 50%;
 `;
 
 const SForm = styled.form`
@@ -128,7 +124,10 @@ const SaveTask = () => {
       closePage
       onClose={handleClose}
     >
-      <SIcon name="fas fa-tasks" />
+      <SCategoryIcon
+        name="fas fa-tasks"
+        size={40}
+      />
 
       <SForm onSubmit={handleSubmit}>
         <STextField

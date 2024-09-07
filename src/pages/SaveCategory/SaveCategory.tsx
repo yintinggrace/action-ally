@@ -3,29 +3,20 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Main from '../../components/templates/Main/Main';
 import string from '../../string';
-import Icon from '../../components/atoms/Icon/Icon';
 import theme from '../../theme/theme';
 import styled from 'styled-components';
 import TextField from '../../components/atoms/TextField/TextField';
 import BoxWrappers from '../../components/organisms/BoxWrappers/BoxWrappers';
 import Button from '../../components/atoms/Button/Button';
 import { Category } from '../../types';
+import CategoryIcon from '../../components/atoms/CategoryIcon/CategoryIcon';
 
 interface LocationState {
   category?: Category;
 }
 
-const SIcon = styled(Icon)<{ backgroundColor: string; iconColor: string; }>`
-  font-size: ${theme.fontSizes.eagle};
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  color: ${({ iconColor }) => iconColor};
+const SCategoryIcon = styled(CategoryIcon)`
   margin: ${theme.space(8)};
-  border-radius: 50%;
-  height: ${theme.space(20)};
-  width: ${theme.space(20)};
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const SButton = styled(Button)`
@@ -130,10 +121,11 @@ const SaveCategory = () => {
       closePage
       onClose={handleClose}
     >
-      <SIcon
+      <SCategoryIcon
         name={icon}
         backgroundColor={backgroundColor}
         iconColor={iconColor}
+        size={20}
       />
 
       <SForm onSubmit={handleSubmit}>

@@ -4,6 +4,7 @@ import theme from '../../../theme/theme';
 import Heading from '../../atoms/Heading/Heading';
 import Icon from '../../atoms/Icon/Icon';
 import { Category } from '../../../types';
+import CategoryIcon from '../../atoms/CategoryIcon/CategoryIcon';
 
 interface ListProps {
   children?: ReactNode;
@@ -43,14 +44,6 @@ const SGoBackIcon = styled(Icon)`
   }
 `;
 
-const SCategoryIcon = styled(Icon)`
-  color: ${({ iconColor }) => iconColor};
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  font-size: ${theme.fontSizes.cat};
-  padding: ${theme.space(3)};
-  border-radius: 50%;
-`;
-
 const STitleWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -79,10 +72,11 @@ const List: React.FC<ListProps> = ({
 
         <STitleWrapper>
           {categoryIcon && (
-            <SCategoryIcon
+            <CategoryIcon
               name={categoryIcon}
               iconColor={category.iconColor}
               backgroundColor={category.backgroundColor}
+              size={12}
             />
           )}
 
