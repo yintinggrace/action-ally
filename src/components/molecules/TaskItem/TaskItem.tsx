@@ -18,6 +18,7 @@ const SLi = styled.li`
   padding: ${theme.space(3)};
   border-bottom: 1px solid ${theme.colors.mediumGray};
   display: flex;
+  align-items: start;
 `;
 
 const SDetails = styled.div`
@@ -25,6 +26,7 @@ const SDetails = styled.div`
   padding: 0 ${theme.space(6)};
   width: 90%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: ${theme.space(1)};
 `;
