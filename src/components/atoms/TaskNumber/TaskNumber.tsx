@@ -11,13 +11,14 @@ const SText = styled.div`
 
 interface TaskNumberProps {
   tasksLength: number;
+  className?: string;
 }
 
-const TaskNumber: React.FC<TaskNumberProps> = ({ tasksLength }) => {
+const TaskNumber: React.FC<TaskNumberProps> = ({ tasksLength, className }) => {
   const itemText = tasksLength === 1 ? string.categoryTasks.item : string.categoryTasks.items;
 
   return (
-    <SText>
+    <SText className={className}>
       {tasksLength} {itemText}
     </SText>
   )

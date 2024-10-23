@@ -21,7 +21,7 @@ interface CategoryProps {
 
 const SCategoryWrapper = styled.li`
   height: ${theme.space(40)};
-  width: ${theme.space(35)};
+  width: ${theme.space(30)};
   background-color: ${theme.colors.white};
   border-radius: ${theme.space(5)};
   display: flex;
@@ -31,8 +31,13 @@ const SCategoryWrapper = styled.li`
   position: relative;
   cursor: pointer;
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.05);
+  }
+
+  ${theme.breakpoints.tabletUp} {
+    width: ${theme.space(35)};
   }
 `;
 

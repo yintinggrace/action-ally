@@ -25,6 +25,15 @@ const SHeader = styled.header`
   display: flex;
   justify-content: center;
   position: relative;
+  width: 50%;
+
+  ${theme.breakpoints.mobileOnly} {
+    width: 100%;
+  }
+
+  ${theme.breakpoints.tabletUp} {
+    width: 60%;
+  }
 `;
 
 const SGoBackIcon = styled(Icon)`
@@ -36,11 +45,17 @@ const SGoBackIcon = styled(Icon)`
   left: ${theme.space(10)};
   height: 100%;
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.05);
   }
+
   &:active {
     color: ${theme.colors.mediumBlack};
+  }
+
+  ${theme.breakpoints.tabletUp} {
+      left: ${theme.space(2)};
   }
 `;
 
@@ -58,13 +73,14 @@ const List: React.FC<ListProps> = ({
   children,
   category,
   goBack,
-  onBack: handleGoBack
+  onBack: handleGoBack,
+  className
 }) => {
   const title = category?.name;
   const categoryIcon = category?.icon;
 
   return (
-    <SList>
+    <SList className={className}>
       <SHeader>
         {goBack && (
           <SGoBackIcon name="fas fa-arrow-left" onClick={handleGoBack} />

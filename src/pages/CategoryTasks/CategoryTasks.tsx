@@ -17,13 +17,14 @@ const STaskList = styled.div`
   flex-direction: column;
   gap: ${theme.space(3)};
   background-color: ${theme.colors.white};
-  height: 90vh;
+  height: calc(100vh - 100px);
   width: 100vw;
   padding: ${theme.space(8)};
   box-sizing: border-box;
   position: relative;
   overflow-y: scroll;
   padding-bottom: ${theme.space(40)};
+  align-items: center;
 `;
 
 const SButton = styled(Button)`
@@ -41,6 +42,22 @@ const SButton = styled(Button)`
   &:active {
     background-color: ${theme.colors.mediumBlack};
   }
+`;
+
+const STaskNumber = styled(TaskNumber)`
+  ${theme.breakpoints.mobileOnly} {
+    width: 90%;
+  }
+
+  ${theme.breakpoints.tabletUp} {
+    width: 58%;
+  }
+`;
+
+const SList = styled(List)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CategoryTasks = () => {
@@ -67,13 +84,13 @@ const CategoryTasks = () => {
   }
 
   return (
-    <List
+    <SList
       goBack
       category={category}
       onBack={handleGoHomeClick}
     >
       <STaskList>
-        <TaskNumber tasksLength={tasks.length} />
+        <STaskNumber tasksLength={tasks.length} />
 
         <TaskItems
           tasks={tasks}
@@ -87,7 +104,7 @@ const CategoryTasks = () => {
           onClick={() => handleAddTaskClick(category)}
         />
       </STaskList>
-    </List>
+    </SList>
   );
 }
 
