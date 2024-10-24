@@ -24,12 +24,14 @@ const SUl = styled.ul`
 const TaskItems: React.FC<TaskItemsProps> = ({
   tasks, category, setTasks
 }) => {
+  const filteredTasks = tasks.filter(task => task.categoryId === category.id);
+
   return (
     <SUl>
-      {tasks.map((task, index) => (
+      {filteredTasks.map((task, index) => (
         <TaskItem
-          tasks={tasks}
           task={task}
+          filteredTasks={filteredTasks}
           key={index}
           category={category}
           setTasks={setTasks}

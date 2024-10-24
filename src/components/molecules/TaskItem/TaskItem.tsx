@@ -9,7 +9,7 @@ import { Task, Category } from '../../../types';
 
 interface TaskItemProps {
   task: Task;
-  tasks: Task[];
+  filteredTasks: Task[];
   category: Category;
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
 }
@@ -58,7 +58,7 @@ const SIcon = styled(Icon)`
 `;
 
 const TaskItem: React.FC<TaskItemProps> = ({
-  task, tasks, category, setTasks
+  task, filteredTasks, category, setTasks
 }) => {
   const navigate = useNavigate();
 
@@ -67,9 +67,12 @@ const TaskItem: React.FC<TaskItemProps> = ({
   };
 
   const handleRemoveTask = () => {
-    const updatedTasks = tasks.filter((t) => t.taskId !== task.taskId);
-    setTasks(updatedTasks);
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    const updatedCategoryTasks = filteredTasks.filter((t) => t.taskId !== task.taskId);
+    const allTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    const otherTasks = allTasks.filter((t: Task) => t.categoryId !== category.id);
+    const updatedAllTasks = [...otherTasks, ...updatedCategoryTasks];
+    setTasks(updatedAllTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedAllTasks));
   };
 
   return (
