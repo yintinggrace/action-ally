@@ -28,11 +28,11 @@ const TaskItems: React.FC<TaskItemsProps> = ({
 
   return (
     <SUl>
-      {filteredTasks.map((task, index) => (
+      {filteredTasks.map((task) => (
         <TaskItem
           task={task}
           filteredTasks={filteredTasks}
-          key={index}
+          key={task.taskId}
           category={category}
           setTasks={setTasks}
         />

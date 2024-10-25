@@ -66,9 +66,9 @@ const Options: React.FC<OptionsProps> = ({
 
   return (
     <SUl>
-      {options.map((option, index) => (
+      {options.map((option) => (
         <SLi
-          key={index}
+          key={option}
           option={option}
           type={type}
           selected={selectedOption === option}

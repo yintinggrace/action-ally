@@ -61,9 +61,9 @@ const CategoryList = () => {
       </Heading>
 
       <ContentWrapper>
-        {categories.map((category, index) => (
+        {categories.map((category) => (
           <Category
-            key={index}
+            key={category.id}
             category={category}
             removeCategory={removeCategory}
           />
