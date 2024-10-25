@@ -6,7 +6,7 @@ import string from '../../../string';
 import Heading from '../../atoms/Heading/Heading';
 import AddCategoryButton from '../AddCategoryButton/AddCategoryButton';
 import Category from '../../molecules/Category/Category';
-import { Category as CategoryType } from '../../../types';
+import { Task, Category as CategoryType } from '../../../types';
 
 const SCategoriesWrapper = styled.div`
   display: flex;
@@ -30,12 +30,29 @@ const ContentWrapper = styled.div`
 
 const CategoryList = () => {
   const [categories, setCategories] = useState<CategoryType[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const location = useLocation();
 
   useEffect(() => {
     const storedCategories = JSON.parse(localStorage.getItem('categories') || '[]');
     setCategories(storedCategories);
+
+    const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    setTasks(storedTasks);
   }, [location]);
+
+  const removeCategory = (categoryId: string) => {
+    const updatedCategories = categories.filter(c => c.id !== categoryId);
+    setCategories(updatedCategories);
+    localStorage.setItem('categories', JSON.stringify(updatedCategories));
+    removeAssociatedTasks(categoryId);
+  };
+
+  const removeAssociatedTasks = (categoryId: string) => {
+    const updatedTasks = tasks.filter(t => t.categoryId !== categoryId);
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  };
 
   return (
     <SCategoriesWrapper>
@@ -48,8 +65,7 @@ const CategoryList = () => {
           <Category
             key={index}
             category={category}
-            categories={categories}
-            setCategories={setCategories}
+            removeCategory={removeCategory}
           />
         ))}
 

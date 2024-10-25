@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../../theme/theme';
 import Text from '../../atoms/Text/Text';
@@ -8,8 +9,7 @@ import { Category as CategoryType } from '../../../types';
 
 interface CategoryProps {
   category: CategoryType;
-  categories: CategoryType[];
-  setCategories: React.Dispatch<React.SetStateAction<CategoryType[]>>;
+  removeCategory: (categoryId: string) => void;
 }
 
 const SCategoryWrapper = styled.li`
@@ -50,12 +50,22 @@ const SText = styled(Text)`
   color: ${theme.colors.darkGray};
 `;
 
-const Category: React.FC<CategoryProps> = ({ category, categories, setCategories }) => {
+const Category: React.FC<CategoryProps> = ({ category, removeCategory }) => {
   const navigate = useNavigate();
-  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-  const filteredTasks = tasks.filter((task: { categoryId: string }) =>
-    task.categoryId === category.id
-  );
+  const location = useLocation();
+  const [taskLength, setTaskLength] = useState<number>(0);
+
+  useEffect(() => {
+    updateTaskLength();
+  }, [category.id, location]);
+
+  const updateTaskLength = () => {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    const filteredTasks = storedTasks.filter((task: { categoryId: string }) =>
+      task.categoryId === category.id
+    );
+    setTaskLength(filteredTasks.length);
+  }
 
   const handleClick = () => {
     navigate('/category-tasks', { state: { category } });
@@ -74,10 +84,9 @@ const Category: React.FC<CategoryProps> = ({ category, categories, setCategories
       </SCategoryInfo>
 
       <CategoryActions
-        taskLength={filteredTasks.length}
+        taskLength={taskLength}
         category={category}
-        categories={categories}
-        setCategories={setCategories}
+        removeCategory={removeCategory}
       />
     </SCategoryWrapper>
   );

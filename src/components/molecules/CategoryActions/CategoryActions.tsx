@@ -7,8 +7,7 @@ import { Category } from '../../../types';
 interface CategoryActionsProps {
   taskLength: number;
   category: Category;
-  categories: Category[];
-  setCategories: React.Dispatch<React.SetStateAction<Category[]>>;
+  removeCategory: (categoryId: string) => void;
 }
 
 const SActionsWrapper = styled.div`
@@ -40,7 +39,7 @@ const SIcon = styled(Icon)`
   }
 `;
 
-const CategoryActions: React.FC<CategoryActionsProps> = ({ taskLength, category, categories, setCategories }) => {
+const CategoryActions: React.FC<CategoryActionsProps> = ({ taskLength, category, removeCategory }) => {
   const navigate = useNavigate();
 
   const handleEditCategory = (event: React.MouseEvent) => {
@@ -50,9 +49,7 @@ const CategoryActions: React.FC<CategoryActionsProps> = ({ taskLength, category,
 
   const handleRemoveCategory = (event: React.MouseEvent) => {
     event.stopPropagation();
-    const updatedCategories = categories.filter((c) => c.id !== category.id);
-    setCategories(updatedCategories);
-    localStorage.setItem('categories', JSON.stringify(updatedCategories));
+    removeCategory(category.id);
   };
 
   return (
