@@ -6,6 +6,7 @@ import string from '../../../string';
 import Heading from '../../atoms/Heading/Heading';
 import AddCategoryButton from '../AddCategoryButton/AddCategoryButton';
 import Category from '../../molecules/Category/Category';
+import { Category as CategoryType } from '../../../types';
 
 const SCategoriesWrapper = styled.div`
   display: flex;
@@ -27,15 +28,8 @@ const ContentWrapper = styled.div`
   gap: ${theme.space(7.5)};
 `;
 
-interface Category {
-  name: string;
-  icon: string;
-  backgroundColor: string;
-  iconColor: string;
-}
-
 const CategoryList = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<CategoryType[]>([]);
   const location = useLocation();
 
   useEffect(() => {

@@ -4,19 +4,12 @@ import theme from '../../../theme/theme';
 import Text from '../../atoms/Text/Text';
 import CategoryActions from '../CategoryActions/CategoryActions';
 import CategoryIcon from '../../atoms/CategoryIcon/CategoryIcon';
-
-interface CategoryItem {
-  id?: string;
-  name: string;
-  icon: string;
-  backgroundColor: string;
-  iconColor: string;
-}
+import { Category as CategoryType } from '../../../types';
 
 interface CategoryProps {
-  category: CategoryItem;
-  categories: CategoryItem[];
-  setCategories: React.Dispatch<React.SetStateAction<CategoryItem[]>>;
+  category: CategoryType;
+  categories: CategoryType[];
+  setCategories: React.Dispatch<React.SetStateAction<CategoryType[]>>;
 }
 
 const SCategoryWrapper = styled.li`

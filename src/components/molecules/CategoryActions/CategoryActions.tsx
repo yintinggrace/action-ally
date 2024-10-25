@@ -2,20 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import theme from "../../../theme/theme";
 import Icon from "../../atoms/Icon/Icon";
-
-interface CategoryItem {
-  id?: string;
-  name: string;
-  icon: string;
-  backgroundColor: string;
-  iconColor: string;
-}
+import { Category } from '../../../types';
 
 interface CategoryActionsProps {
   taskLength: number;
-  category: CategoryItem;
-  categories: CategoryItem[];
-  setCategories: React.Dispatch<React.SetStateAction<CategoryItem[]>>;
+  category: Category;
+  categories: Category[];
+  setCategories: React.Dispatch<React.SetStateAction<Category[]>>;
 }
 
 const SActionsWrapper = styled.div`
