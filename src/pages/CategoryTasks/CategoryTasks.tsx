@@ -73,7 +73,7 @@ const CategoryTasks = () => {
     const filteredTasks = storedTasks.filter((task: Task) => task.categoryId === category.id);
 
     setTasks(filteredTasks);
-  }, []);
+  }, [tasks.length]);
 
   const handleGoHomeClick = () => {
     navigate('/');
