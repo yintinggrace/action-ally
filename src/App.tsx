@@ -10,7 +10,7 @@ const App = () => {
     <>
       <GlobalStyle />
 
-      <Router>
+      <Router basename={process ? process.env.REACT_APP_BASENAME : '/'}>
         <div className="App" data-testid="App">
           <Routes>
             <Route path="/save-task" element={<SaveTask />} />
