@@ -58,7 +58,7 @@ const SaveCategory = () => {
   const state = location.state as LocationState;
   const category = state?.category;
 
-  const [icon, setIcon] = useState<string>(category?.icon || 'fas fa-layer-group');
+  const [icon, setIcon] = useState<string>(category?.icon || 'faLayerGroup');
   const [backgroundColor, setBackgroundColor] = useState<string>(category?.backgroundColor || theme.colors.lightGray);
   const [iconColor, setIconColor] = useState<string>(category?.iconColor || theme.colors.white);
   const [categoryName, setCategoryName] = useState<string>(category?.name || '');
@@ -126,6 +126,7 @@ const SaveCategory = () => {
         backgroundColor={backgroundColor}
         iconColor={iconColor}
         size={20}
+        showCircle={true}
       />
 
       <SForm onSubmit={handleSubmit}>

@@ -21,7 +21,7 @@ const string = {
     },
     icon: {
       name: 'Icon',
-      iconOptions: ['fas fa-home', 'fas fa-briefcase', 'fas fa-shopping-cart', 'fas fa-dumbbell', 'fas fa-heartbeat', 'fas fa-graduation-cap', 'fas fa-plane', 'fas fa-film', 'fas fa-wallet', 'fas fa-user-graduate']
+      iconOptions: ['faCartShopping', 'faBriefcase', 'faDumbbell', 'faFilm', 'faGraduationCap', 'faHeartPulse', 'faHouse', 'faPlane', 'faTree', 'faWallet']
     },
     buttons: {
       addCategory: 'Add the category',

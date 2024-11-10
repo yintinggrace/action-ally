@@ -13,8 +13,6 @@ interface CategoryProps {
 }
 
 const SCategoryWrapper = styled.li`
-  height: ${theme.space(40)};
-  width: ${theme.space(30)};
   background-color: ${theme.colors.white};
   border-radius: ${theme.space(5)};
   display: flex;
@@ -24,13 +22,10 @@ const SCategoryWrapper = styled.li`
   position: relative;
   cursor: pointer;
   transition: transform 0.3s ease;
+  aspect-ratio: 1 / 1.25;
 
   &:hover {
-    transform: scale(1.05);
-  }
-
-  ${theme.breakpoints.tabletUp} {
-    width: ${theme.space(35)};
+    transform: scale(1.015);
   }
 `;
 
@@ -39,10 +34,12 @@ const SCategoryInfo = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: ${theme.space(6)};
+  height: 45%;
 `;
 
 const SCategoryIcon = styled(CategoryIcon)`
   margin-bottom: ${theme.space(2)};
+  flex-grow: 1;
 `;
 
 const SText = styled(Text)`
@@ -78,7 +75,7 @@ const Category: React.FC<CategoryProps> = ({ category, removeCategory }) => {
           name={category.icon}
           iconColor={category.iconColor}
           backgroundColor={category.backgroundColor}
-          size={9}
+          showCircle={true}
         />
         <SText>{category.name}</SText>
       </SCategoryInfo>

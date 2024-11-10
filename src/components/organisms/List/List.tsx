@@ -93,6 +93,7 @@ const List: React.FC<ListProps> = ({
               iconColor={category.iconColor}
               backgroundColor={category.backgroundColor}
               size={12}
+              showCircle={true}
             />
           )}
 

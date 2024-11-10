@@ -125,8 +125,9 @@ const SaveTask = () => {
       onClose={handleClose}
     >
       <SCategoryIcon
-        name="fas fa-tasks"
+        name="faTasks"
         size={40}
+        showCircle={true}
       />
 
       <SForm onSubmit={handleSubmit}>

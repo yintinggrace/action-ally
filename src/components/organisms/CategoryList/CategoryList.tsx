@@ -14,18 +14,21 @@ const SCategoriesWrapper = styled.div`
   justify-content: flex-start;
   width: 100%;
   gap: ${theme.space(6)};
-  max-width: 600px;
+  max-width: 800px;
   background-color: ${theme.colors.whiteTransparent};
   border-radius: ${theme.space(5)};
   padding: ${theme.space(6)};
   box-sizing: border-box;
 `;
 
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: ${theme.space(7.5)};
+const SContentWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: ${theme.space(3)};
+
+  ${theme.breakpoints.tabletUp} {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 const CategoryList = () => {
@@ -60,7 +63,7 @@ const CategoryList = () => {
         {string.home.categories}
       </Heading>
 
-      <ContentWrapper>
+      <SContentWrapper>
         {categories.map((category) => (
           <Category
             key={category.id}
@@ -70,7 +73,7 @@ const CategoryList = () => {
         ))}
 
         <AddCategoryButton />
-      </ContentWrapper>
+      </SContentWrapper>
     </SCategoriesWrapper>
   );
 }

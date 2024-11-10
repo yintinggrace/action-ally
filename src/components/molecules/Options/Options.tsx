@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../../theme/theme';
+import CategoryIcon from '../../atoms/CategoryIcon/CategoryIcon';
 
 type type = 'color' | 'icon';
 
@@ -36,8 +37,7 @@ const SLi = styled.li<{ option: string; type: type; selected: boolean }>`
   }
 `;
 
-const SIcon = styled.i<{ selected?: boolean }>`
-  color: ${({ selected }) => selected ? theme.colors.mediumBlack : theme.colors.white};
+const SCategoryIcon = styled(CategoryIcon)<{ selected?: boolean }>`
   transition: transform 0.3s ease;
   &:hover {
     transform: scale(1.1);
@@ -75,9 +75,10 @@ const Options: React.FC<OptionsProps> = ({
           onClick={() => handleSelectedOption(option)}
         >
           {type === 'icon' && (
-            <SIcon
-              className={option}
-              selected={selectedOption === option}
+            <SCategoryIcon
+              name={option}
+              iconColor={selectedOption === option ? theme.colors.mediumBlack : theme.colors.white}
+              hoverColor={theme.colors.mediumBlack}
             />
           )}
         </SLi>
