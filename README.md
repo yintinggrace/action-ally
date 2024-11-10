@@ -2,6 +2,9 @@
 
 A clean and simple to-do list application built with **React**, **TypeScript**, **React Router**, and **styled-components**. This project demonstrates a modern, modular, and scalable approach to building web applications.
 
+## 🌐 Demo
+Check out the live demo here: https://www.gracechan.se/projects/action-ally
+
 ## ✨ Features
 
 - **Add, edit, and delete tasks**: Create and manage your to-do items with ease.
